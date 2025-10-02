@@ -3,6 +3,7 @@ import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
   component: RootComponent,
+  notFoundComponent: () => <div>404 not found</div>,
 });
 
 function RootComponent() {
