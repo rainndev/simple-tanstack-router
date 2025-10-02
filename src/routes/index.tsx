@@ -5,5 +5,9 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-  return <div>Hello "/"!</div>;
+  return (
+    <div>
+      <h1>Welcome to your Task Dashboard</h1>
+    </div>
+  );
 }

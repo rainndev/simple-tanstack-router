@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Finish project proposal",
+    "description": "Write and submit the project proposal for the web app.",
+    "status": "in-progress",
+    "dueDate": "2025-10-05"
+  },
+  {
+    "id": 2,
+    "title": "Review TanStack Router docs",
+    "description": "Go through the official documentation and try basic routing examples.",
+    "status": "completed",
+    "dueDate": "2025-09-30"
+  },
+  {
+    "id": 3,
+    "title": "Workout session",
+    "description": "1-hour weightlifting session at the gym.",
+    "status": "pending",
+    "dueDate": "2025-10-03"
+  },
+  {
+    "id": 4,
+    "title": "UI design draft",
+    "description": "Create a Figma draft for the new dashboard layout.",
+    "status": "in-progress",
+    "dueDate": "2025-10-06"
+  }
+]
