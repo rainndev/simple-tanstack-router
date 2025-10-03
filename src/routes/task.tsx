@@ -1,13 +1,7 @@
 import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-
-export interface todoType {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
+import type { todoType } from "@/types/todo";
 
 const apiUrl = "https://jsonplaceholder.typicode.com/todos";
 

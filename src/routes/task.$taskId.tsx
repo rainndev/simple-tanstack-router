@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import type { todoType } from "./task";
+import type { todoType } from "@/types/todo";
 
 const apiUrl = "https://jsonplaceholder.typicode.com/todos";
 
