@@ -1,3 +1,5 @@
+import { Label } from "@/components/ui/label";
+import { Switch } from "@radix-ui/react-switch";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/settings")({
@@ -5,5 +7,10 @@ export const Route = createFileRoute("/settings")({
 });
 
 function RouteComponent() {
-  return <div>Hello "/settings"!</div>;
+  return (
+    <div>
+      <Switch id="theme" />
+      <Label htmlFor="theme">Theme</Label>
+    </div>
+  );
 }
