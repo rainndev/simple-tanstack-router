@@ -15,7 +15,7 @@ function RootComponent() {
           <Link to="/task">Task</Link>
           <Link to="/settings">Settings</Link>
         </div>
-        <div className="w-full h-dvh flex items-center justify-center text-2xl">
+        <div className="w-full h-dvh  flex items-center justify-center text-2xl p-10 ">
           <Outlet />
         </div>
       </div>
