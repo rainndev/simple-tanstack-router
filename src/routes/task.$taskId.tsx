@@ -16,7 +16,7 @@ function RouteComponent() {
   console.log("task", task);
 
   return (
-    <div className="p-5 bg-white/10 rounded-xl no-underline">
+    <div className="p-10 bg-white/10 rounded-xl no-underline min-w-3xl">
       <h1 className="text-2xl text-white">{task?.description}</h1>
       <p className="text-lg text-[#212121] px-3 py1.5 bg-amber-200 rounded-lg w-fit mt-2 ">
         {task?.status}
