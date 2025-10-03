@@ -14,6 +14,7 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TaskTaskIdRouteImport } from './routes/task.$taskId'
+import { Route as ProfileEditRouteImport } from './routes/profile.edit'
 
 const TaskRoute = TaskRouteImport.update({
   id: '/task',
@@ -40,40 +41,67 @@ const TaskTaskIdRoute = TaskTaskIdRouteImport.update({
   path: '/$taskId',
   getParentRoute: () => TaskRoute,
 } as any)
+const ProfileEditRoute = ProfileEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => ProfileRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/profile': typeof ProfileRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/settings': typeof SettingsRoute
   '/task': typeof TaskRouteWithChildren
+  '/profile/edit': typeof ProfileEditRoute
   '/task/$taskId': typeof TaskTaskIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/profile': typeof ProfileRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/settings': typeof SettingsRoute
   '/task': typeof TaskRouteWithChildren
+  '/profile/edit': typeof ProfileEditRoute
   '/task/$taskId': typeof TaskTaskIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/profile': typeof ProfileRoute
+  '/profile': typeof ProfileRouteWithChildren
   '/settings': typeof SettingsRoute
   '/task': typeof TaskRouteWithChildren
+  '/profile/edit': typeof ProfileEditRoute
   '/task/$taskId': typeof TaskTaskIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/profile' | '/settings' | '/task' | '/task/$taskId'
+  fullPaths:
+    | '/'
+    | '/profile'
+    | '/settings'
+    | '/task'
+    | '/profile/edit'
+    | '/task/$taskId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/profile' | '/settings' | '/task' | '/task/$taskId'
-  id: '__root__' | '/' | '/profile' | '/settings' | '/task' | '/task/$taskId'
+  to:
+    | '/'
+    | '/profile'
+    | '/settings'
+    | '/task'
+    | '/profile/edit'
+    | '/task/$taskId'
+  id:
+    | '__root__'
+    | '/'
+    | '/profile'
+    | '/settings'
+    | '/task'
+    | '/profile/edit'
+    | '/task/$taskId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ProfileRoute: typeof ProfileRoute
+  ProfileRoute: typeof ProfileRouteWithChildren
   SettingsRoute: typeof SettingsRoute
   TaskRoute: typeof TaskRouteWithChildren
 }
@@ -115,8 +143,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TaskTaskIdRouteImport
       parentRoute: typeof TaskRoute
     }
+    '/profile/edit': {
+      id: '/profile/edit'
+      path: '/edit'
+      fullPath: '/profile/edit'
+      preLoaderRoute: typeof ProfileEditRouteImport
+      parentRoute: typeof ProfileRoute
+    }
   }
 }
+
+interface ProfileRouteChildren {
+  ProfileEditRoute: typeof ProfileEditRoute
+}
+
+const ProfileRouteChildren: ProfileRouteChildren = {
+  ProfileEditRoute: ProfileEditRoute,
+}
+
+const ProfileRouteWithChildren =
+  ProfileRoute._addFileChildren(ProfileRouteChildren)
 
 interface TaskRouteChildren {
   TaskTaskIdRoute: typeof TaskTaskIdRoute
@@ -130,7 +176,7 @@ const TaskRouteWithChildren = TaskRoute._addFileChildren(TaskRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ProfileRoute: ProfileRoute,
+  ProfileRoute: ProfileRouteWithChildren,
   SettingsRoute: SettingsRoute,
   TaskRoute: TaskRouteWithChildren,
 }
