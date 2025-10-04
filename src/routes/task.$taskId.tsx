@@ -6,6 +6,7 @@ const apiUrl = "https://jsonplaceholder.typicode.com/todos";
 
 export const Route = createFileRoute("/task/$taskId")({
   component: RouteComponent,
+  pendingComponent: () => <div>Loading...</div>,
 });
 
 function RouteComponent() {

@@ -27,6 +27,8 @@ function RouteComponent() {
           <div className="flex gap-2 items-center">
             <Link
               className="underline"
+              preload="intent"
+              preloadDelay={100}
               params={{ taskId: String(data.id) }}
               to="/task/$taskId"
             >
